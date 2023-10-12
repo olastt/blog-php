@@ -1,0 +1,53 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgrey;
+}
+
+
+
+.container {
+    text-align: center;
+    font-family: Verdana, serif;
+}
+
+.reg {
+    width: 400px;
+    margin-top: 20px;
+    /*padding: 20px;*/
+    border-radius: 8px;
+}
+
+.reg input[type="text"],
+.reg input[type="password"],
+.reg input[type="login"],
+.reg input[type="email"]{
+    font-family: Verdana, serif;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    margin-left: 210px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.reg input[type="button"] {
+    margin-right: -440px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reg input[type="button"]:hover {
+    background-color: #45a049;
+}
+

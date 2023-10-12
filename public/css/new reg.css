@@ -1,0 +1,74 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgrey;
+}
+
+
+
+.info{
+
+    display: block;
+    margin-block-start: 5em;
+    margin-block-end: 5em;
+    margin-inline-start: 0;
+    margin-inline-end: 4em;
+}
+
+
+.container {
+    text-align: center;
+    font-family: Verdana, serif;
+}
+
+.reg {
+    width: 400px;
+    margin-top: 20px;
+    padding: 20px;
+    /*background-color: #F5F5DC;*/
+    border-radius: 8px;
+}
+
+.reg input[type="text"],
+.reg input[type="password"],
+.reg input[type="login"],
+.reg input[type="email"]{
+    font-family: Verdana, serif;
+    width: 100%;
+    padding: 12px;
+    /*margin-bottom: 15px;*/
+    margin-left: 210px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+
+
+/* Стиль кнопки регистрации */
+button.register {
+    margin-right: -440px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Стиль кнопки регистрации при наведении */
+button.register:hover {
+    background-color: #45a049;
+}
+
+.alert {
+    margin-right: -440px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+
+}
