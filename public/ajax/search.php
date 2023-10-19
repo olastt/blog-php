@@ -11,6 +11,9 @@ session_start();
     <link rel="stylesheet" href="../css/search.css">
     <link rel="icon" href="../img/fav.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="header">
@@ -60,7 +63,7 @@ session_start();
             $search = $_GET['text'];
 
             if (empty($search)) {
-                die("Пустой запрос");
+                echo '<p style="text-align: center;  font-family: Arial, sans-serif;">Пустой запрос</p>' ;
             }
 
             // Поиск статей в базе данных из двух таблиц
@@ -92,7 +95,7 @@ session_start();
                     <?php
                 }
             } else {
-                echo "По вашему запросу ничего не найдено.";
+                echo '<p style="text-align: center;  font-family: Arial, sans-serif;">По вашему запросу ничего не найдено.</p>';
             }
 
 
