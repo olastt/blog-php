@@ -31,3 +31,13 @@ services:
             - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini'
         env_file:
             - ./.env
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: my_phpmyadmin
+        environment:
+            - PMA_HOST=mysql
+            - PMA_USER=root
+            - PMA_PASSWORD=123456
+        ports:
+            - '8080:80'
