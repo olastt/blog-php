@@ -3,7 +3,7 @@ $driver = 'mysql';
 $host = 'localhost';
 $db_name = 'testing';
 $db_user = 'root';
-$db_pass = '';
+$db_pass = '123456';
 $charset = 'utf8';
 $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];  // Убираем дублирование при выводе
