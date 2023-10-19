@@ -37,7 +37,7 @@ session_start();
 <?php
 $id = $_GET["id"]; // получение ID поста из параметра URL
 
-$servername = "localhost"; // адрес сервера базы данных
+$servername = "mysql"; // адрес сервера базы данных
 $username = "root"; // имя пользователя базы данных
 $password = ""; // пароль базы данных
 $dbname = "testing"; // имя базы данных

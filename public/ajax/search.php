@@ -43,9 +43,9 @@ session_start();
     <div class="row">
         <div class="col-6 offset-3">
             <?php
-            $servername = "localhost"; // адрес сервера базы данных
+            $servername = "mysql"; // адрес сервера базы данных
             $username = "root"; // имя пользователя базы данных
-            $password = ""; // пароль базы данных
+            $password = "123456"; // пароль базы данных
             $dbname = "testing"; // имя базы данных
 
             // Создание подключения к базе данных

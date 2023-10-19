@@ -47,19 +47,19 @@ $author = $_SESSION['username'] ?? null;
 <div class="article">
     <h2>Где применяется PHP?</h2>
     <p>Где же?</p>
-    <a href="ajax/posts_default.php?id=2">Читать далее</a>
+    <a href="ajax/posts_default.php?id=3">Читать далее</a>
 </div>
 
 <div class="article">
     <h2>Почему PHP еще жив?</h2>
     <p>Почему же?</p>
-    <a href="ajax/posts_default.php?id=3">Читать далее</a>
+    <a href="ajax/posts_default.php?id=5">Читать далее</a>
 </div>
 
 <div class="article">
     <h2>Как я страдала над блогом</h2>
     <p>Сейчас расскажу...</p>
-    <a href="ajax/posts_default.php?id=4">Читать далее</a>
+    <a href="ajax/posts_default.php?id=6">Читать далее</a>
 </div>
 </body>
 </html>

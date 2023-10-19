@@ -1,6 +1,6 @@
 <?php
 $driver = 'mysql';
-$host = 'localhost';
+$host = 'mysql';
 $db_name = 'testing';
 $db_user = 'root';
 $db_pass = '123456';
