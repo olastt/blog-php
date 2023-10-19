@@ -62,10 +62,8 @@ session_start();
             // Получение поискового запроса из формы
             $search = $_GET['text'];
 
-            if (empty($search)) {
-                echo '<h2 style="text-align: center;  font-family: Arial, sans-serif;">Пустой запрос</h2>' ;
-            }
-            $conn->close();
+
+
 
 
             // Поиск статей в базе данных из двух таблиц
@@ -98,6 +96,9 @@ session_start();
                 }
             } else {
                 echo '<h2 style="text-align: center;  font-family: Arial, sans-serif;">По вашему запросу ничего не найдено.</h2>';
+            }
+            if (empty($search)) {
+                echo '<h2 style="text-align: center;  font-family: Arial, sans-serif;">Пустой запрос</h2>' ;
             }
 
 
