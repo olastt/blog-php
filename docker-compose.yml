@@ -10,7 +10,7 @@ services:
             - '.:/application'
         environment:
             - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=db
+            - MYSQL_DATABASE=testing
         ports:
             - '53002:3306'
 
