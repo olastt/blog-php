@@ -1,65 +1,57 @@
 <?php
-
 session_start();
-
-$_SESSION['username'] = $_POST['username'];
-$_SESSION['password'] = $_POST['password'];
-$_SESSION['login'] = $_POST['login'];
-$_SESSION['email'] = $_POST['email'];
-
 /** @var PDO $pdo */
-$pdo = require_once __DIR__ . '/../database/database.php'; // подключаю файл с бд
+$pdo = require_once __DIR__ . '/../database/database.php'; // подключение к базе данных
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    // проверяю, что все необходимые данные в $_POST есть
-    exit("Эт не пост");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // проверяем, что все необходимые данные в $_POST есть
+    if (isset($_POST['username'], $_POST['password'], $_POST['login'], $_POST['email'])) {
+        $name = $_POST['username'];
+        $pass = $_POST['password'];
+        $login = $_POST['login'];
+        $email = $_POST['email'];
+
+        // генерируем случайную соль
+        $salt = random_bytes(16);
+
+        // хешируем пароль с солью
+        $hashedPassword = password_hash($pass . $salt, PASSWORD_BCRYPT);
+
+        // добавляем валидацию данных
+        if (empty($name) || iconv_strlen($name) < 3) {
+            echo json_encode(['status' => 'error', 'message' => 'Имя не может быть пустым']);
+            exit();
+        } elseif (iconv_strlen($pass) < 5) {
+            echo json_encode(['status' => 'error', 'message' => 'Пароль должен содержать не менее 5 символов']);
+            exit();
+        } elseif (iconv_strlen($login) < 5) {
+            echo json_encode(['status' => 'error', 'message' => 'Логин должен содержать не менее 5 символов']);
+            exit();
+        } elseif (iconv_strlen($email) < 3 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(['status' => 'error', 'message' => 'Неверный формат Email']);
+            exit();
+        }
+
+        // вставляем данные в базу данных, включая хеш пароля и соль
+        $sql = 'INSERT INTO users (name, password, salt, login, email) VALUES (?, ?, ?, ?, ?)';
+        $query = $pdo->prepare($sql);
+
+        if ($query->execute([$name, $hashedPassword, $salt, $login, $email])) {
+            // добавляем нового пользователя в таблицу authors
+            $insertQuery = $pdo->prepare('INSERT INTO authors (login, password) VALUES (?, ?)');
+            if ($insertQuery->execute([$login, $hashedPassword])) {
+                echo json_encode(['status' => 'success', 'message' => 'Регистрация прошла успешно']);
+                exit();
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Ошибка при выполнении запроса']);
+                exit();
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Ошибка при выполнении запроса']);
+            exit();
+        }
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Необходимо заполнить все поля']);
+        exit();
+    }
 }
-
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (!isset($data['username'], $data['password'], $data['login'], $data['email'])) {
-    // отправляю сообщение об ошибке
-    echo json_encode(['status' => 'error', 'message' => 'Необходимо заполнить все поля'], JSON_UNESCAPED_UNICODE);
-    exit();
-}
-
-$name = $data['username'];
-$pass = $data['password'];
-$login = $data['login'];
-$email = $data['email'];
-
-// генерирую случайную соль
-$salt = random_bytes(16);
-
-// хеширую пароль с солью
-$hashedPassword = password_hash($pass . $salt, PASSWORD_BCRYPT);
-
-// добавляю валидацию данных
-if (empty($name)) {
-    echo json_encode(['status' => 'error', 'message' => 'Имя не может быть пустым'], JSON_UNESCAPED_UNICODE);
-    exit();
-} elseif (iconv_strlen($name) < 3) {
-    echo json_encode(['status' => 'error', 'message' => 'Имя должно содержать не менее 3 символов'], JSON_UNESCAPED_UNICODE);
-    exit();
-} elseif (iconv_strlen($pass) < 5) {
-    echo json_encode(['status' => 'error', 'message' => 'Пароль должен содержать не менее 5 символов'], JSON_UNESCAPED_UNICODE);
-    exit();
-} elseif (iconv_strlen($login) < 5) {
-    echo json_encode(['status' => 'error', 'message' => 'Логин должен содержать не менее 5 символов'], JSON_UNESCAPED_UNICODE);
-    exit();
-} elseif (iconv_strlen($email) < 3 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['status' => 'error', 'message' => 'Неверный формат Email'], JSON_UNESCAPED_UNICODE);
-    exit();
-}
-// вставляю данные в базу данных, включая хеш пароля и соль
-$sql = 'INSERT INTO users (name, password, salt, login, email) VALUES (?, ?, ?, ?, ?)';
-$query = $pdo->prepare($sql);
-
-if ($query->execute([$name, $hashedPassword, $salt, $login, $email])) {
-    // отправляю успешный ответ
-    echo json_encode(['status' => 'success', 'message' => 'Регистрация прошла успешно'], JSON_UNESCAPED_UNICODE);
-} else {
-    // отправляю сообщение об ошибке
-    echo json_encode(['status' => 'error', 'message' => 'Ошибка при выполнении запроса'], JSON_UNESCAPED_UNICODE);
-}
-

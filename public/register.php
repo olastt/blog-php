@@ -1,17 +1,14 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
     <link rel="stylesheet" href="css/new reg.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-
 <body>
 <div class="container">
     <h1>Регистрация</h1>
@@ -32,29 +29,7 @@ session_start();
         <button type="submit" class="register" id="reg_user">Зарегистрироваться</button>
     </form>
 </div>
-
 <script>
-
-    // async function postData(url = "", data = {}) {
-    //     // Default options are marked with *
-    //     const response = await fetch(url, {
-    //         method: "POST", // *GET, POST, PUT, DELETE, etc.
-    //         mode: "cors", // no-cors, *cors, same-origin
-    //         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    //         credentials: "same-origin", // include, *same-origin, omit
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             // 'Content-Type': 'application/x-www-form-urlencoded',
-    //         },
-    //         redirect: "follow", // manual, *follow, error
-    //         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    //         body: JSON.stringify(data), // body data type must match "Content-Type" header
-    //     });
-    //
-    //     return response.json(); // parses JSON response into native JavaScript objects
-    // }
-
-
     $(document).ready(function () {
         $('#registration-form').submit(function (e) {
             e.preventDefault();
@@ -62,17 +37,6 @@ session_start();
             var pass = $('#password').val();
             var login = $('#login').val();
             var email = $('#email').val();
-
-            // postData("ajax/reg.php", {
-            //         'username': name,
-            //         'password': pass,
-            //         'login': login,
-            //         'email': email
-            //     }).then((data) => {
-            //     console.log(data); // JSON data parsed by `data.json()` call
-            // });
-
-
 
             $.ajax({
                 url: 'ajax/reg.php',
@@ -101,5 +65,4 @@ session_start();
     });
 </script>
 </body>
-
 </html>

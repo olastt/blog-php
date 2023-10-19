@@ -5,8 +5,8 @@
 }
 
 .search-input {
-    margin-left: 20px;
-    flex: 1;
+    margin-left: -390px;
+    /*flex: 1;*/
     padding: 8px 10px;
     border: 0;
     border-radius: 5px;
@@ -32,6 +32,7 @@
 }
 
 .top-right button {
+    margin-top: 8px;
     border-radius: 9px;
     font-size: large;
     margin-left: 10px;
@@ -65,7 +66,7 @@
 }
 
 
-/* Обновленные стили для .container */
+
 .container {
     text-align: center;
     font-family: Verdana, serif;
@@ -118,4 +119,20 @@ button.post:hover {
     border: none;
     border-radius: 5px;
 
+}
+
+.logo-link {
+    text-decoration: none;
+    /*background-color: #e1f8ff; !* Цвет фона *!*/
+    color: #000000; /* Цвет текста */
+    padding: 10px 20px; /* Отступы вокруг текста */
+    border-radius: 5px; /* Закругленные углы */
+    transition: background-color 0.3s, color 0.3s; /* Плавное изменение цветов при наведении курсора */
+
+    /* Дополнительные стили, если нужно */
+}
+
+.logo-link:hover {
+    background-color: #2774ce; /* Изменение цвета фона при наведении */
+    color: #fff; /* Изменение цвета текста при наведении */
 }

@@ -1,0 +1,91 @@
+.search-input {
+    margin-left: -60px;
+    /*flex: 1;*/
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    margin-left: 10px;
+    padding: 8px 20px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #1c87c9;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.top-right {
+    position: absolute;
+    top: 5px;
+    right: 80px;
+    margin-top: 38px;
+    font-family: Verdana, serif;
+    margin-right: 200px;
+}
+
+.top-right button {
+    border-radius: 9px;
+    font-size: large;
+    margin-right: -2px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.top-right button:hover {
+    background-color: #b2d8f7;
+}
+.top-buttons {
+    position: absolute;
+    top: 5px;
+    right: 80px;
+    margin-top: 38px;
+    font-family: Verdana, serif;
+    margin-right: 40px;
+}
+
+.top-buttons button {
+    border-radius: 9px;
+    font-size: large;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    margin-right: 10px; /* Добавляем отступ между кнопками влево */
+}
+
+.top-buttons button:hover {
+    background-color: #b2d8f7;
+}
+
+
+
+.left-buttons {
+    position: absolute;
+    top: 5px;
+    right: 80px;
+    margin-top: 38px;
+    font-family: Verdana, serif;
+    margin-right: -60px;
+}
+
+.left-buttons button {
+    border-radius: 9px;
+    font-size: large;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    margin-right: 10px; /* Добавляем отступ между кнопками влево */
+}
+
+.left-buttons button:hover {
+    background-color: #b2d8f7;
+}

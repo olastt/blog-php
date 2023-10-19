@@ -1,9 +1,9 @@
 <?php
-session_start();
 
 if (session_status() == PHP_SESSION_NONE) {
-     echo session_start();
+    session_start();
 }
+
 /** @var PDO $pdo */
 $pdo = require_once __DIR__ . '/../database/database.php'; // подключаю файл с бд
 
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Получаю хеш и соль из базы данных для данного пользователя для поля логин
-        $sql = 'SELECT password, salt FROM users WHERE login = :login';
+        $sql = 'SELECT id, password, salt FROM users WHERE login = :login';
         $query = $pdo->prepare($sql);
         $query->bindParam(':login', $login);
         $query->execute();
@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $storedSalt = $userData['salt'];
             // сравниваю введенный пароль с хешем и солью
             if (password_verify($pass . $storedSalt, $storedHashedPassword)) {
+                // Успешная аутентификация
+                $_SESSION['user_id'] = $userData['id'];
                 echo json_encode(['status' => 'success', 'message' => 'Авторизация прошла успешно']);
             } else {
                 // Отправляем сообщение об ошибке
@@ -42,11 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
-
-
-
-
 
 
 

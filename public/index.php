@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>PHP</title>
+    <title>PHP Blog</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/fav.ico">
 </head>
@@ -26,28 +26,52 @@
         </div>
     </form>
 </header>
-
 <div class="article">
     <h2>История создания</h2>
     <p>Блог о создании PHP</p>
-    <a href="#">Читать далее</a>
+    <a href="" onclick="showNotification()">Читать далее</a>
 </div>
+
+<script>
+    function showNotification() {
+        alert("Зарегистрируйтесь");
+    }
+</script>
 
 <div class="article">
     <h2>Где применяется PHP?</h2>
     <p>Где же?</p>
-    <a href="#">Читать далее</a>
+    <a href="" onclick="showNotification()">Читать далее</a>
 </div>
+
+<script>
+    function showNotification() {
+        alert("Зарегистрируйтесь");
+    }
+</script>
+
 <div class="article">
     <h2>Почему PHP еще жив?</h2>
     <p>Почему же?</p>
-    <a href="#">Читать далее</a>
+    <a href="" onclick="showNotification()">Читать далее</a>
 </div>
+
+<script>
+    function showNotification() {
+        alert("Зарегистрируйтесь");
+    }
+</script>
 
 <div class="article">
     <h2>Как я страдала над блогом</h2>
     <p>Сейчас расскажу...</p>
-    <a href="#">Читать далее</a>
+    <a href="" onclick="showNotification()">Читать далее</a>
     </div>
+
+<script>
+    function showNotification() {
+        alert("Зарегистрируйтесь");
+    }
+</script>
 </body>
 </html>

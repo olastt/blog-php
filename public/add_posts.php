@@ -1,6 +1,7 @@
 <?php
 session_start();
 //var_dump($_POST);
+//var_dump($_SESSION);
 ?>
 
 
@@ -13,17 +14,18 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <header class="header">
-    <h1 class="logo">PHP Blog</h1>
+    <a href="index2.php" class="logo-link">
+        <h1 class="logo">PHP Blog</h1>
+    </a>
 
     <form class="search-form">
         <input type="text" name="text" class="search-input" placeholder="Я хочу найти...">
         <input type="submit" name="submit" class="search-button" value="Поиск">
     </form>
 
-    <form action="/cabinet.php" target="_blank">
+    <form action="personal_account.php" target="_blank">
         <div  class="top-right">
-
-            <button href="cabinet.php" class="cabinetButton">Мой кабинет</button>
+            <button href="personal_account.php" class="cabinetButton">Мой кабинет</button>
         </div>
     </form>
 </header>
@@ -32,22 +34,17 @@ session_start();
 <div class="container">
     <h1>Добавление статьи</h1>
     <h4>Здесь вы можете добавить свою статью</h4>
-    <form style="min-height: 70vh" class="article" id="blog-form" action="/ajax/ajax cabinet.php" method="post">
+    <form style="min-height: 70vh" class="article" id="blog-form" action="/ajax/ajax%20posts.php" method="post">
 
-        <p style="margin-left: -350px">Заголовок</p>
+        <p style="margin-left: -370px">Заголовок</p>
         <input type="text" class="article" name="title" id="title" placeholder="Заголовок статьи"><br>
 
-<!--        <p style="margin-left: -380px">Интро</p>-->
-<!--        <textarea type="text" class="article" name="intro" id="intro" placeholder="Интро статьи"></textarea>-->
-
-        <p style="margin-left: -380px">Текст</p>
-        <textarea type="text" class="article" name="text" id="text" placeholder="Текст статьи"></textarea>
+        <p style="margin-left: -410px">Текст</p>
+        <textarea type="text" class="article" name="content" id="content" placeholder="Текст статьи"></textarea>
 
         <div class="alert" id="error"></div>
 
-
         <button type="submit" class="post" id="article_send">Создать</button>
-
     </form>
 </div>
 
@@ -56,29 +53,27 @@ session_start();
         $('#blog-form').submit(function (e) {
             e.preventDefault();
             var title = $('#title').val();
-            var intro = $('#intro').val();
-            var text = $('#text').val();
+            var content = $('#content').val();
 
             $.ajax({
-                url: 'ajax/ajax cabinet.php',
+                url: 'ajax/ajax posts.php',
                 type: 'POST',
                 data: {
                     'title': title,
-                    'intro': intro,
-                    'text': text
+                    'content': content
                 },
                 dataType: 'json',
                 success: function (data) {
                     if (data.status === 'success') {
                         alert('Статья успешно добавлена. Обновление страницы...');
-                        window.location.href = 'cabinet.php';
+                        window.location.href = 'add_posts.php';
                     } else {
                         $('#error').show();
                         $('#error').text('Обратите внимание: ' + data.message);
                     }
                 },
                 error: function (data) {
-                    alert('Произошла ошибка при отправке данных на сервер.' + data.message);
+                    alert('Произошла ошибка при отправке данных на сервер.');
                 }
             });
         });

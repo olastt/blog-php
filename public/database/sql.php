@@ -34,7 +34,7 @@ $pdo = new PDO($dsn, $db_user, $db_pass);
 // fetchAll - вывод всех совпадений
 //$name = 'klancy';
 //$email = '';
-//$id = 211;
+$id = 211;
 //$sql = 'SELECT `name`, `email` FROM `users` WHERE `name` = :name && `id` >= :id';
 //$query = $pdo->prepare($sql);
 //$query->execute(['name' => $name, 'id' => $id]);
