@@ -62,9 +62,9 @@ session_start();
             // Получение поискового запроса из формы
             $search = $_GET['text'];
 
-
-
-
+            if (empty($search)) {
+                die("<h1 style=\"text-align: center;  font-family: 'Roboto', sans-serif;\">Пустой запрос</h1>") ;
+            }
 
             // Поиск статей в базе данных из двух таблиц
             $sql = "SELECT title, content FROM posts WHERE title LIKE '%$search%' OR content LIKE '%$search%'";
@@ -95,12 +95,8 @@ session_start();
                     <?php
                 }
             } else {
-                echo '<h2 style="text-align: center;  font-family: Arial, sans-serif;">По вашему запросу ничего не найдено.</h2>';
+                echo "<h1 style=\"text-align: center;  font-family: 'Roboto', sans-serif;\">По вашему запросу ничего не найдено.</h2>";
             }
-            if (empty($search)) {
-                echo '<h2 style="text-align: center;  font-family: Arial, sans-serif;">Пустой запрос</h2>' ;
-            }
-
 
             $conn->close();
             ?>
